@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { getDatabase,set,ref } from "firebase/database";
 import './App.css';
-
+import {app} from "./firebase"
+import SignUp from "./Pages/SignUp";
+const db=getDatabase(app)
 function App() {
-  return (
+  const putData=()=>{
+    set(ref(db, 'users/vaneet'), {
+      id: 1,
+      email: "vaneet3157gmail.com",
+      password :"123456789"
+    });
+  }
+  console.log("putData",putData);
+  return (  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h2>Firebase Reactf</h2>
+        {/* <button onClick={putData}>Put data</button> */}
+        <SignUp/>
     </div>
   );
 }
